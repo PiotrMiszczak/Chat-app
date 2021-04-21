@@ -6,8 +6,10 @@ import Colors from '../constants/Colors'
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import TopTabNavigator from './TopTabNavigator';
+import ChatRoom from '../screens/ChatRoomScreen'
 import LinkingConfiguration from './LinkingConfiguration';
-import {Octicons, MaterialCommunityIcons} from '@expo/vector-icons'
+import {Octicons, MaterialCommunityIcons, FontAwesome5, MaterialIcons} from '@expo/vector-icons'
+import { Text } from '../components/Themed';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -47,6 +49,19 @@ function RootNavigator() {
     </View>}
       } />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="ChatRoom" component={ChatRoom} options={({ route }) => ({ title: route.params.name,
+      headerRight:()=>(
+        <View style={{flexDirection:'row',
+        width:120,
+   
+    justifyContent:'space-between',
+    marginRight:10}}>
+      <MaterialIcons name="call" size={24} color={'white'} />
+      <FontAwesome5 name="video" size={24} color={'white'} />
+      <MaterialCommunityIcons name="dots-vertical" size={24} color={'white'} />
+    </View>
+      )
+      })}  />
     </Stack.Navigator>
   );
 }
