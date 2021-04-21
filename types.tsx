@@ -10,8 +10,8 @@ export type TopTabParamList = {
   Calls: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type ChatsParamList = {
+  ChatsScreen: undefined;
 };
 
 export type TabTwoParamList = {
@@ -20,3 +20,23 @@ export type TabTwoParamList = {
 export type TabThreeParamList = {
   TabThreeScreen: undefined;
 };
+
+export type User = {
+  id: String;
+  name: String;
+  imageUri: String;
+ 
+}
+
+export type Message = {
+  id: String;
+  content: String;
+  createdAt: String;
+ 
+}
+
+export type ChatRoom = {
+  id: String;
+  users: User[];
+  lastMessage: Message;
+}

@@ -5,10 +5,10 @@ import * as React from 'react';
 import {Fontisto} from '@expo/vector-icons'
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import ChatsScreen from '../screens/ChatsScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
-import { TopTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
+import { TopTabParamList, ChatsParamList, TabTwoParamList, TabThreeParamList } from '../types';
 
 
 //TODO - custom navigator
@@ -22,7 +22,7 @@ export default function TopTabNavigator() {
 
   return (
     <TopTab.Navigator
-      initialRouteName="Status"
+      initialRouteName="Chats"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].background,
          style:{backgroundColor:Colors[colorScheme].tint},
          indicatorStyle:{backgroundColor:Colors[colorScheme].background,
@@ -33,7 +33,7 @@ export default function TopTabNavigator() {
           }}>
       <TopTab.Screen
         name="Camera"
-        component={TabOneNavigator}
+        component={TabTwoNavigator}
        
         options={{
           
@@ -49,7 +49,7 @@ export default function TopTabNavigator() {
       />
       <TopTab.Screen
         name="Chats"
-        component={TabTwoNavigator}
+        component={ChatsNavigator}
         options={{
           
         }}
@@ -80,17 +80,17 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const ChatsStack = createStackNavigator<ChatsParamList>();
 
-function TabOneNavigator() {
+function ChatsNavigator() {
   return (
-    <TabOneStack.Navigator screenOptions={{headerShown:false}} >
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
+    <ChatsStack.Navigator screenOptions={{headerShown:false}} >
+      <ChatsStack.Screen
+        name="ChatsScreen"
+        component={ChatsScreen}
         options={{ headerTitle: 'Tab One Title' }}
       />
-    </TabOneStack.Navigator>
+    </ChatsStack.Navigator>
   );
 }
 
@@ -101,7 +101,7 @@ function TabTwoNavigator() {
     <TabTwoStack.Navigator screenOptions={{headerShown:false}}>
       <TabTwoStack.Screen
         name="TabTwoScreen"
-        component={TabTwoScreen}
+        component={ChatsScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
